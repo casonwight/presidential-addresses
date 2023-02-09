@@ -1,0 +1,82 @@
+data:
+  ngram_counts:
+    max_features: 1000
+    ngram_range:
+      - 1
+      - 4
+    analyzer: 'word'
+  tfidf_scores:
+    max_features: 1000
+    ngram_range:
+      - 1
+      - 4
+    analyzer: 'word'
+  sentiment_scores:
+  word2vec_embeddings:
+    model_name: 'en_core_web_md'
+  bert_embeddings:
+    model_name: 'all-MiniLM-L6-v2'
+experiments:
+  author_prediction: 
+    logistic-regression:
+      params: 
+        penalty:
+          - elasticnet
+          - l1
+          - l2
+        max_iter:
+          - 1000
+          - 10
+        solver:
+          - saga
+      coefs: 'coef_'
+    naive-bayes:
+      params: {}
+      coefs: null
+    random-forest:
+      params: {}
+    xgboost:
+      params: {}
+      coefs: 'feature_importances_'
+    k-nearest-neighbors:
+      params: {}
+      coefs: null
+    linear-discriminant-analysis:
+      params: {}
+      coefs: 'coef_'
+    quadratic-discriminant-analysis:
+      params: {}
+      coefs: 'coef_'
+  date_prediction:
+    regression:
+      params:
+        alpha: 
+          - .1
+          - 10.0
+          - 100.0
+        l1_ratio:
+          - 0.01
+          - .50
+          - .99
+        max_iter:
+          - 1000
+      coefs: 'coef_'
+    random-forest:
+      params:
+        max_depth:
+          - null # [None, 3, 5],
+        max_features:
+          - 'auto' # ['auto', 'sqrt']
+      coefs: 'feature_importances_'
+    xgboost:
+      params:
+        max_leaves:
+          - 0
+          - 100
+          - 1000
+        reg_lambda:
+          - 0
+          - .001
+          - .1
+          - 10.0
+      coefs: 'feature_importances_'
