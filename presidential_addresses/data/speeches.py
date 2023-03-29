@@ -25,20 +25,6 @@ class Speeches:
 			.assign(president=lambda x: pd.Categorical(x['president'], categories=x['president'].unique()))
 		)
 
-		# for i in self.speeches.index:
-		# 	speech_texts = self.speeches.loc[i, 'transcript'].replace('\r', '').replace('\n\n', '\n').split('\n')
-
-		# 	speech_long = pd.DataFrame({
-		# 		'title': self.speeches.loc[i, 'title'],
-		# 		'date': self.speeches.loc[i, 'date'],
-		# 		'president': self.speeches.loc[i, 'president'],
-		# 		'text_num': range(len(speech_texts)),
-		# 		'text': speech_texts
-		# 	})
-		# 	speeches_long = pd.concat([speeches_long, speech_long], ignore_index=True)
-
-		# speeches_long['president'] = pd.Categorical(speeches_long['president'], categories=speeches_long['president'].unique())
-		# speeches_long['text_len'] = speeches_long['text'].apply(len)
 		return speeches_long
 
 if __name__ == "__main__":
